@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: 'Fredoka One', 'Nunito', cursive, sans-serif;
+  background: linear-gradient(160deg, #a78bfa 0%, #ec4899 50%, #f97316 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+}

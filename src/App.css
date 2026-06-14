@@ -1,0 +1,60 @@
+/* ── Home screen ─────────────────────────────────────────── */
+.home-root {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 32px 20px;
+}
+
+.home-title {
+  font-size: clamp(2rem, 8vw, 3rem);
+  color: #fff;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  font-family: 'Fredoka One', 'Nunito', cursive, sans-serif;
+}
+
+.home-sub {
+  font-size: clamp(1rem, 4vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  font-family: 'Fredoka One', 'Nunito', cursive, sans-serif;
+}
+
+.home-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.home-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.97);
+  border: none;
+  border-radius: 28px;
+  padding: 32px 28px;
+  width: clamp(140px, 38vw, 180px);
+  cursor: pointer;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.22), 0 0 0 4px rgba(255, 255, 255, 0.3);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  font-family: 'Fredoka One', 'Nunito', cursive, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.home-card:hover  { transform: translateY(-6px); }
+.home-card:active { transform: translateY(2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+
+.home-card-icon { font-size: clamp(3rem, 10vw, 4rem); }
+.home-card-name { font-size: clamp(1.1rem, 4vw, 1.4rem); font-weight: 900; }
+.home-card-desc { font-size: clamp(0.8rem, 3vw, 0.95rem); color: #9ca3af; }
+
+.math-card    .home-card-name { color: #7c3aed; }
+.english-card .home-card-name { color: #0369a1; }

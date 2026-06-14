@@ -1,0 +1,159 @@
+/* EnglishGame uses the shared classes from MathGame.css:
+   .game-root, .game-header, .game-title, .score-badge, .score-star,
+   .score-num, .back-btn, .hint-text, .celebration-overlay,
+   .celebration-card, .celeb-*, .float-container, .float-emoji
+   and all @keyframes (shake, bounceIn, fadeIn, floatUp, floatEmoji,
+   spin, rainbow, pop, blink-border)  */
+
+/* ── Word card ───────────────────────────────────────────── */
+.word-card {
+  background: #fff;
+  border-radius: 28px;
+  padding: clamp(20px, 5vw, 32px) clamp(20px, 6vw, 36px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18), 0 0 0 4px rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 5vw, 28px);
+  width: 100%;
+  max-width: 460px;
+}
+
+/* ── Picture frame ───────────────────────────────────────── */
+.word-pic {
+  flex-shrink: 0;
+  width: clamp(90px, 24vw, 120px);
+  height: clamp(90px, 24vw, 120px);
+  background: linear-gradient(135deg, #ede9fe 0%, #fce7f3 100%);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(3.2rem, 10vw, 4.6rem);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.1);
+  /* polaroid-style inner border */
+  border: 3px solid #f3e8ff;
+}
+
+/* ── Word letter tiles ───────────────────────────────────── */
+.word-tiles {
+  display: flex;
+  gap: clamp(6px, 2vw, 10px);
+  align-items: center;
+}
+
+.word-tile {
+  width: clamp(52px, 14vw, 68px);
+  height: clamp(60px, 16vw, 76px);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(2rem, 7vw, 2.8rem);
+  font-weight: 900;
+  line-height: 1;
+}
+
+/* Known letters */
+.tile-letter {
+  background: #ede9fe;
+  color: #7c3aed;
+}
+
+/* Missing letter slot — pulses to draw attention */
+.tile-blank {
+  background: #f9fafb;
+  border: 3px dashed #c4b5fd;
+  animation: blankPulse 1.3s ease-in-out infinite;
+}
+
+/* Filled-in correct letter */
+.tile-correct {
+  background: #dcfce7;
+  color: #16a34a;
+  border: 3px solid #86efac;
+  animation: pop 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55) both;
+}
+
+/* ── Letter choice buttons — 2 × 2 grid ─────────────────── */
+.choices-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  width: 100%;
+  max-width: 320px;
+}
+
+.choice-btn {
+  height: clamp(76px, 20vw, 92px);
+  border-radius: 22px;
+  border: none;
+  font-size: clamp(2.2rem, 8vw, 3rem);
+  font-family: 'Fredoka One', 'Nunito', cursive, sans-serif;
+  font-weight: 900;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+  box-shadow: 0 7px 0 rgba(0, 0, 0, 0.2);
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  top: 0;
+  letter-spacing: 1px;
+}
+
+.choice-btn:active {
+  transform: translateY(5px);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+  top: 5px;
+}
+
+/* Four distinct bright colors, position-stable */
+.choice-color-0 { background: #ef4444; box-shadow: 0 7px 0 #b91c1c; }
+.choice-color-1 { background: #3b82f6; box-shadow: 0 7px 0 #1d4ed8; }
+.choice-color-2 { background: #22c55e; box-shadow: 0 7px 0 #15803d; }
+.choice-color-3 { background: #f97316; box-shadow: 0 7px 0 #c2410c; }
+
+.choice-color-0:active { box-shadow: 0 2px 0 #b91c1c; }
+.choice-color-1:active { box-shadow: 0 2px 0 #1d4ed8; }
+.choice-color-2:active { box-shadow: 0 2px 0 #15803d; }
+.choice-color-3:active { box-shadow: 0 2px 0 #c2410c; }
+
+/* Wrong-answer flash */
+.choice-wrong {
+  animation: wrongBounce 0.5s ease both;
+}
+
+/* ── Animations specific to English game ─────────────────── */
+@keyframes blankPulse {
+  0%, 100% {
+    border-color: #c4b5fd;
+    background: #f9fafb;
+    box-shadow: none;
+  }
+  50% {
+    border-color: #7c3aed;
+    background: #ede9fe;
+    box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.15);
+  }
+}
+
+@keyframes wrongBounce {
+  0%   { transform: scale(1); filter: brightness(1); }
+  20%  { transform: scale(0.88); filter: brightness(0.6); }
+  50%  { transform: scale(1.05); filter: brightness(0.8); }
+  100% { transform: scale(1); filter: brightness(1); }
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 360px) {
+  .word-card { gap: 12px; padding: 16px; }
+  .choices-grid { max-width: 280px; gap: 8px; }
+}
+
+@media (max-height: 650px) {
+  .eng-root { gap: 12px; }
+  .word-card { padding: 14px 18px; }
+  .choice-btn { height: 64px; }
+}
